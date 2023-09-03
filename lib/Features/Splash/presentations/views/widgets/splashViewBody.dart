@@ -1,5 +1,9 @@
 import 'package:bookly_app/Core/utlis/assets.dart';
+import 'package:bookly_app/Features/Splash/presentations/views/widgets/slidingText.dart';
+import 'package:bookly_app/Features/home/presentation/views/home_view.dart';
+import 'package:bookly_app/constants.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class SplashViewBody extends StatefulWidget {
   const SplashViewBody({Key? key}) : super(key: key);
@@ -20,18 +24,14 @@ class _SplashViewBodyState extends State<SplashViewBody>
   void initState() {
     super.initState();
 
-    animationController = AnimationController(
-      vsync: this,
-      duration: const Duration(seconds: 1),
-    );
+    initSlidingAnimation();
 
-    slidingAnimation = Tween<Offset>(
-      begin: const Offset(0, 20),
-      end: Offset.zero,
-    ).animate(animationController);
-
-    animationController.forward();
+    navigateToHome();
   }
+
+
+
+
 @override
   void dispose() {
     super.dispose();
@@ -48,17 +48,31 @@ class _SplashViewBodyState extends State<SplashViewBody>
         const SizedBox(
           height: 4,
         ),
-        AnimatedBuilder(
-          animation: slidingAnimation,
-          builder: (context, _) => SlideTransition(
-            position: slidingAnimation,
-            child: const Text(
-              'Read Free Books',
-              textAlign: TextAlign.center,
-            ),
-          ),
-        )
+        SlidingText(slidingAnimation: slidingAnimation)
       ],
     );
   }
+
+
+  void initSlidingAnimation() {
+    animationController = AnimationController(
+      vsync: this,
+      duration: const Duration(seconds: 1),
+    );
+
+    slidingAnimation = Tween<Offset>(
+      begin: const Offset(0, 20),
+      end: Offset.zero,
+    ).animate(animationController);
+
+    animationController.forward();
+  }
+
+  void navigateToHome() {
+    Future.delayed(const Duration(seconds: 3),(){
+      Get.to(()=>const HomeView(), transition: Transition.fade,duration: kTransitionDuration);
+    });
+  }
 }
+
+
