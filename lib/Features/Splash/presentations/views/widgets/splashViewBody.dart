@@ -1,9 +1,10 @@
+import 'package:bookly_app/Core/utlis/app_routers.dart';
 import 'package:bookly_app/Core/utlis/assets.dart';
 import 'package:bookly_app/Features/Splash/presentations/views/widgets/slidingText.dart';
 import 'package:bookly_app/Features/home/presentation/views/home_view.dart';
 import 'package:bookly_app/constants.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:go_router/go_router.dart';
 
 class SplashViewBody extends StatefulWidget {
   const SplashViewBody({Key? key}) : super(key: key);
@@ -29,15 +30,13 @@ class _SplashViewBodyState extends State<SplashViewBody>
     navigateToHome();
   }
 
-
-
-
 @override
   void dispose() {
     super.dispose();
     animationController.dispose();
     // عشان بعد م الكنترولر يخلص شغله يتقفل علطول عشان مهيدرش المصادر بتاعتك ويقلل من التطبيق بتاعك لازم تعملها مع كل كنترلر بتستخدمه
   }
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -70,7 +69,7 @@ class _SplashViewBodyState extends State<SplashViewBody>
 
   void navigateToHome() {
     Future.delayed(const Duration(seconds: 3),(){
-      Get.to(()=>const HomeView(), transition: Transition.fade,duration: kTransitionDuration);
+      GoRouter.of(context).push(AppRouter.kHomeView);
     });
   }
 }
