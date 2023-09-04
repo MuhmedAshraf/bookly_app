@@ -1,6 +1,6 @@
 import 'package:bookly_app/Core/utlis/styles.dart';
 import 'package:flutter/material.dart';
-import '../../../../../Core/utlis/assets.dart';
+import 'best_seller_ListView.dart';
 import 'custom_app_bar.dart';
 import 'listView_books.dart';
 
@@ -9,72 +9,43 @@ class HomeViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(
-        horizontal: 24,
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: const [
-          CustomAppBar(),
-          ListViewBooks(),
-          SizedBox(
-            height: 50,
-          ),
-          Text(
-            'Best Seller',
-            style: Styles.textStyle18,
-            textAlign: TextAlign.start,
-          ),
-          SizedBox(
-            height: 20,
-          ),
-          BestSellerListViewItem()
-        ],
-      ),
-    );
-  }
-}
-
-class BestSellerListViewItem extends StatelessWidget {
-  const BestSellerListViewItem({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      height: 125,
-      child: Row(
-        children: [
-          AspectRatio(
-            aspectRatio: 2.7 / 4,
-            child: Container(
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(8),
-                  color: Colors.red,
-                  image: const DecorationImage(
-                    fit: BoxFit.fill,
-                    image: AssetImage(AssetsData.testBook),
-                  )),
-            ),
-          ),
-          const SizedBox(
-            width: 30,
-          ),
-          Column(
-            children: [
+    return CustomScrollView( // ويدجيت حلوة لحل معضلة لو انت عندك نيستيد ليست فيو وعاوز اليو اي كله يسكرول
+      slivers: [
+        SliverToBoxAdapter( //نوع من انواع السليفيرز له طول محدد ع قد الشايلد اللي جواه
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: const [
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 30),
+                child: CustomAppBar(),
+              ),
+              ListViewBooks(),
               SizedBox(
-                width: MediaQuery.of(context).size.width * 0.5,
-                child: const Text(
-                  'Harry Potter and the Goblet of Fire',
-                  style: Styles.textStyle20,
-                  maxLines: 2,
-                  overflow: TextOverflow.ellipsis,
+                height: 50,
+              ),
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 30),
+                child: Text(
+                  'Best Seller',
+                  style: Styles.textStyle18,
+                  textAlign: TextAlign.start,
                 ),
-              )
+              ),
+              SizedBox(
+                height: 20,
+              ),
             ],
           ),
-        ],
-      ),
+        ),
+        const SliverFillRemaining( //دا مش زي اللي فوق عشان من الاخر اللي فوق له اخر بيبني الطفل بتاعه كامل بطول محدد انما دا بيبنيه كأنه بيتمدد وبياخد جواه اي ويجيت بت Expanded عادي ف دا عشان احنا الليست دي هتبقا اخر حاجة ف الشاشة ف بقوله تمدد براحتك بقا وخد الشاشة كلها
+          child:  Padding(
+            padding: EdgeInsets.symmetric(horizontal: 30),
+            child: BestSellerListView(),
+          ),
+        )
+      ],
     );
+
   }
 }
+
