@@ -1,6 +1,7 @@
 import 'package:bookly_app/Core/utlis/styles.dart';
 import 'package:bookly_app/Features/home/presentation/views/widgets/book_rating.dart';
 import 'package:bookly_app/Features/home/presentation/views/widgets/custom_books_item.dart';
+import 'package:bookly_app/Features/home/presentation/views/widgets/similar_books_listView.dart';
 import 'package:flutter/material.dart';
 import 'books_cost_button.dart';
 import 'custom_bookDetail_appBar.dart';
@@ -49,10 +50,28 @@ class BookDetailsViewBody extends StatelessWidget {
               height: 37,
             ),
             const BooksCostButtons(),
+            const SizedBox(
+              height: 50,
+            ),
+            Align( //عشان اعمل الاين لويجيت لوحدها بس دون تطبيق الألاين ع كل الويدجيت
+              alignment: Alignment.centerLeft,
+              child: Text(
+                'You can also like',
+                style: Styles.textStyle14.copyWith(fontWeight: FontWeight.w600),
+              ),
+            ),
+            const SizedBox(
+              height: 16,
+            ),
+            const SimilarBooksListView(),
+            const SizedBox(
+              height: 40,
+            ),
           ],
         ),
       ),
     );
   }
 }
+
 
