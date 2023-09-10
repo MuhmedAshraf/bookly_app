@@ -1,5 +1,5 @@
-import 'package:bookly_app/Core/utlis/app_routers.dart';
-import 'package:bookly_app/Core/utlis/assets.dart';
+import 'package:bookly_app/Core/utils/app_routers.dart';
+import 'package:bookly_app/Core/utils/assets.dart';
 import 'package:bookly_app/Features/Splash/presentations/views/widgets/slidingText.dart';
 import 'package:bookly_app/Features/home/presentation/views/home_view.dart';
 import 'package:bookly_app/constants.dart';
