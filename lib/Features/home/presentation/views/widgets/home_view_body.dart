@@ -21,7 +21,7 @@ class HomeViewBody extends StatelessWidget {
               ),
               ListViewBooks(),
               SizedBox(
-                height: 50,
+                height: 30,
               ),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 30),
@@ -32,7 +32,7 @@ class HomeViewBody extends StatelessWidget {
                 ),
               ),
               SizedBox(
-                height: 20,
+                height: 15,
               ),
             ],
           ),
