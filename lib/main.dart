@@ -25,7 +25,7 @@ class BooklyApp extends StatelessWidget {
         BlocProvider(
           create: (context) => FeaturedBooksCubit(
             getIt.get<HomeRepoImpl>(), //استحدام باكدج الجيت ات اللي بتعمل سينجلتون سيرفس
-          ),
+          )..fetchFeaturedBooks(), // هنا بقوله بعد م تشغل البلوك دا نفذلي الميثود دي بعده علطول ودي الميثود اللي هتعرضلي البيانات بتاعتي ودا مكان استدعائها السليم لانها مش معتمده ع زرار ولا اي حاجة تشغلها يبقا لازم اول م البلوك بتاعها يشتغل ف الهوم تطبقه وتنفذها ع طول
         ),
         BlocProvider(
           create: (context) => NewestBooksCubit(
