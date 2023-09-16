@@ -15,7 +15,6 @@ class ImageLinks extends Equatable {
     'smallThumbnail': smallThumbnail,
     'thumbnail': thumbnail,
   };
-
   @override
   List<Object?> get props => [smallThumbnail, thumbnail];
 }
