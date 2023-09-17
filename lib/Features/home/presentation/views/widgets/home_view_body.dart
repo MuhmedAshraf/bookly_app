@@ -11,6 +11,7 @@ class HomeViewBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomScrollView(
       // ويدجيت حلوة لحل معضلة لو انت عندك نيستيد ليست فيو وعاوز اليو اي كله يسكرول
+      physics: const BouncingScrollPhysics(),
       slivers: [
         SliverToBoxAdapter(
           //نوع من انواع السليفيرز له طول محدد ع قد الشايلد اللي جواه

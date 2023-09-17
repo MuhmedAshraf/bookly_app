@@ -4,7 +4,9 @@ import 'package:bookly_app/Features/home/presentation/manger/featured_books_cubi
 import 'package:bookly_app/Features/home/presentation/manger/featured_books_cubit/featured_books_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
+import '../../../../../Core/utils/app_routers.dart';
 import 'custom_books_item.dart';
 
 class ListViewBooks extends StatelessWidget {
@@ -24,10 +26,17 @@ class ListViewBooks extends StatelessWidget {
                 itemBuilder: (context, index) {
                   return Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                    child: CustomBooksItem(
-                      imageUrl:
-                          state.books[index].volumeInfo.imageLinks?.thumbnail ??
-                              '',
+                    child: GestureDetector(
+                      onTap: () {
+                        GoRouter.of(context).push(AppRouter.kBookDetailsView,
+                            extra: state.books[index]);
+                      },
+                      child: CustomBooksItem(
+                        bookModel: state.books[index],
+                        imageUrl: state.books[index].volumeInfo.imageLinks
+                                ?.thumbnail ??
+                            '',
+                      ),
                     ),
                   );
                 }),
