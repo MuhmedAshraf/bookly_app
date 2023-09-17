@@ -4,7 +4,7 @@ import 'package:bookly_app/Features/home/data/repos/home_repo.dart';
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 
-import '../model/BookModelTest.dart';
+import '../model/BookModel.dart';
 
 class HomeRepoImpl implements HomeRepo {
   final ApiService apiService;
@@ -12,11 +12,11 @@ class HomeRepoImpl implements HomeRepo {
   HomeRepoImpl(this.apiService);
 
   @override
-  Future<Either<Failure, List<BookModel>>> fetchNewsedBooks() async {
+  Future<Either<Failure, List<BookModel>>> fetchNewestBooks() async {
     try {
       var data = await apiService.get(
           endPoint:
-              'volumes?Filtering=free-ebooks&Sorting=newest &q=subject:programming');
+          'volumes?Filtering=free-ebooks&Sorting=newest &q=computer science');
       List<BookModel> books = [];
       for (var item in data['items']) {
         books.add(BookModel.fromJson(item));

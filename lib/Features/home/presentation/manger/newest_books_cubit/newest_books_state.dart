@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import '../../../data/model/BookModelTest.dart';
+import '../../../data/model/BookModel.dart';
 
 abstract class NewestBooksState extends Equatable {
   const NewestBooksState();

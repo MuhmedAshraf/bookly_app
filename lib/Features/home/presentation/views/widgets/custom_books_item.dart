@@ -17,8 +17,8 @@ class CustomBooksItem extends StatelessWidget {
           //باكدج بتكيشلك الصور اللي جاية من النت بشكل محترم وكمان تقدر من خلالها تحط حاجة وقت التحميل بتاع الصورة وكمان لو الصورة جات ب ايرور تقدر تحط ويدجيت تتعمل في حالة الايرور
           imageUrl: imageUrl,
           fit: BoxFit.fill,
-          errorWidget: (context, url, error) => const Icon(Icons.info_outline),
-          placeholder: (context, url) => const CustomLoadingIndicator(),
+          errorWidget: (context, url, error) => const Icon(Icons.error_outline),
+         // placeholder: (context, url) => const CustomLoadingIndicator(),
         ),
       ),
     );

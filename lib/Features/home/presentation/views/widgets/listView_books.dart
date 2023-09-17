@@ -14,35 +14,29 @@ class ListViewBooks extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<FeaturedBooksCubit, FeaturedBooksState>(
       builder: (context, state) {
-        if(state is FeaturedBooksSuccess){
+        if (state is FeaturedBooksSuccess) {
           return SizedBox(
-            height: MediaQuery
-                .of(context)
-                .size
-                .height * 0.3,
+            height: MediaQuery.of(context).size.height * 0.3,
             child: ListView.builder(
-              physics: const BouncingScrollPhysics(),
-              itemCount: state.books.length,
+                physics: const BouncingScrollPhysics(),
+                itemCount: state.books.length,
                 scrollDirection: Axis.horizontal,
                 itemBuilder: (context, index) {
-                  return  Padding(
+                  return Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 8.0),
                     child: CustomBooksItem(
                       imageUrl:
-                        state.books[index].volumeInfo.imageLinks.thumbnail,
-                      //state.books[index].volumeInfo.imageLinks.thumbnail,
+                          state.books[index].volumeInfo.imageLinks?.thumbnail ??
+                              '',
                     ),
                   );
                 }),
           );
-        }
-        else if (state is FeaturedBooksFailure){
+        } else if (state is FeaturedBooksFailure) {
           return CustomErrorWidget(errMessage: state.errMessage);
-        }
-        else {
+        } else {
           return const CustomLoadingIndicator();
         }
-
       },
     );
   }
